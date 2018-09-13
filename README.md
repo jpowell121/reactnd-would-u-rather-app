@@ -12,20 +12,20 @@ You can find the most recent version of this application code [here](https://git
 - [Coding Process](#coding-process)
 - [Folder Structure](#folder-structure)
 
-##Build Instructions
+## Build Instructions
 
 Here I will put the build instructions.
 
 
-##Design Process
+## Design Process
 
 Would You Rather design process - todo.
 
-##Coding Process
+## Coding Process
 
 Would You Rather coding process - todo.
 
-##Folder Structure
+## Folder Structure
 
 The final product structure is as follows:
 
