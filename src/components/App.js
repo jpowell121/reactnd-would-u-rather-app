@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import '../index.css';
+import { connect } from 'react-redux'
+import { handleInitialData } from "../actions/shared";
 
 class App extends Component {
+  componentDidMount() {
+    this.props.dispatch(handleInitialData());
+  }
+
   render() {
     return (
       <div className="center">
@@ -11,4 +17,9 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps ({ authedUser }) {
+  return {
+    loading: authedUser === null
+  }
+}
+export default connect(mapStateToProps)(App);
