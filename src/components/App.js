@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../index.css';
 import { connect } from 'react-redux'
 import { handleInitialData } from "../actions/shared";
+import QuestionFrame from './QuestionFrame'
 
 class App extends Component {
   componentDidMount() {
@@ -11,15 +12,10 @@ class App extends Component {
   render() {
     return (
       <div className="center">
-        App - starter
+        <QuestionFrame />
       </div>
     );
   }
 }
 
-function mapStateToProps ({ authedUser }) {
-  return {
-    loading: authedUser === null
-  }
-}
-export default connect(mapStateToProps)(App);
+export default connect()(App);

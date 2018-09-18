@@ -4,6 +4,69 @@ body {
   font-family: sans-serif;
 }
 
-.center {
-  text-align: center;
+/* questionFrame CSS */
+
+.questionFrame {
+  width: 100%;
+  max-width: 590px;
+  min-width: 500px;
+  display: flex;
+  margin: 0 auto;
+  border: 4px solid #DDE0E3;
+  border-radius: 3px;
+  flex-direction: column;
+}
+
+.qf-header {
+  background-color: #DDE0E3;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+  font-weight: bold;
+}
+
+.qf-body{
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+}
+
+.qf-info {
+  margin: 10px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.qf-info > span {
+  font-weight: bold;
+}
+
+.qf-info-button {
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 300px;
+  padding: 10px;
+  border: 1px solid green;
+  cursor: pointer;
+  background-color: lightgreen;
+  font-size: 16px;
+}
+
+.qf-divider {
+  width: 10px;
+  margin: 6px 0;
+  background: #DDE0E3;
+  display: flex;
+}
+
+.qf-avatar {
+  border: 1px solid #000;
+  height: 120px;
+  border-radius: 60px;
+  margin: 10px;
+  display: flex;
+  align-self: center;
 }
