@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import '../index.css';
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import React, {Component, Fragment} from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import { connect } from 'react-redux'
 import { handleInitialData } from "../actions/shared";
-import Home from './Home'
+import LoadingBar from 'react-redux-loading';
+import Home from './Home';
 import Login from './Login';
-import Leaderboard from './Leaderboard'
+import Leaderboard from './Leaderboard';
 import NewQuestion from "./NewQuestion";
 
 class App extends Component {
@@ -15,16 +15,30 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <div className="container">
-          <Route path='/' exact component={Home} />
-          <Route path='/login' exact component={Login} />
-          <Route path='/leaderboard' exact component={Leaderboard} />
-          <Route path='/new' exact component={NewQuestion} />
-        </div>
-      </Router>
-    );
+        <Router>
+          <Fragment>
+            <LoadingBar/>
+            <div className="container">
+              {this.props.loading === true
+              ? null
+                : <div>
+                  <Route path='/' exact component={Home} />
+                  <Route path='/login' exact component={Login} />
+                  <Route path='/leaderboard' exact component={Leaderboard} />
+                  <Route path='/new' exact component={NewQuestion} />
+                </div>}
+            </div>
+          </Fragment>
+        </Router>
+    )
   }
 }
 
-export default connect()(App);
+function mapStateToProps ({ authedUser }) {
+  return {
+    loading: authedUser === null
+  }
+}
+
+
+export default connect(mapStateToProps)(App);
