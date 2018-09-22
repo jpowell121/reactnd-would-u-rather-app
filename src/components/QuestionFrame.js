@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
+import QuestionClip from './QuestionClip'
 
 class QuestionFrame extends Component {
 
@@ -15,11 +15,8 @@ class QuestionFrame extends Component {
             className='qf-avatar'
           />
           <div className="qf-divider"></div>
-          <div className="qf-info">
-            <span>Would you rather....</span>
-            <p>...{this.props.questionText}...</p>
-            <button className="qf-info-button">View Poll</button>
-          </div>
+          {/* TODO - need to add logic here to select right subcomponent - needs to be passed in from higher level component */}
+          <QuestionClip questionText={this.props.questionText} />
         </div>
       </div>
     )
