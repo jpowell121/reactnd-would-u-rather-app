@@ -4,7 +4,7 @@ import { receiveQuestions } from "./questions";
 import { setAuthedUser } from "./authedUser";
 import { showLoading, hideLoading } from 'react-redux-loading'
 
-const AUTHED_ID = 'tylermcginnis'; // todo this needs to be replaced when the real login is implemented
+const AUTHED_ID = ''; // initial no one logged in
 
 
 export function handleInitialData () {

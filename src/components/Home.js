@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import QuestionFrame from './QuestionFrame'
+import { Redirect } from 'react-router-dom'
 
 
 class Home extends Component {
@@ -26,6 +27,14 @@ class Home extends Component {
   };
 
   render() {
+    const { authedUser } = this.props;
+
+
+    // if no user logged in, redirect to login page
+    if (authedUser === '') {
+      return <Redirect to='/login'/>
+    }
+
 
     return (
       <div>
@@ -35,11 +44,11 @@ class Home extends Component {
         </div>
 
         <div id="answers" className="tabcontent" style={{display: 'block'}}>
-          {this.props.answeredQuestions.map((question)=> <QuestionFrame id={question} />)}
+          {this.props.answeredQuestions.map((question)=> <QuestionFrame key={question} id={question} />)}
         </div>
 
         <div id="questions" className="tabcontent">
-          {this.props.unansweredQuestions.map((question)=> <QuestionFrame id={question} />)}
+          {this.props.unansweredQuestions.map((question)=> <QuestionFrame key={question} id={question} />)}
         </div>
       </div>
     )
@@ -48,6 +57,11 @@ class Home extends Component {
 
 
 function mapStateToProps ({authedUser, users, questions}) {
+
+  // if no user logged in, return
+  if (authedUser === '') {
+    return {authedUser: '',}
+  }
 
   // this gets keys of the questions
   const questionIds = Object.keys(questions);
