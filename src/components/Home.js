@@ -38,16 +38,17 @@ class Home extends Component {
     return (
       <div>
         <div className="tab">
-          <button className="tablinks active" id='answered' onClick={(e) => this.handleTabClick(e, 'answers')}>Answered Questions</button>
-          <button className="tablinks" id='unanswered' onClick={(e) => this.handleTabClick(e, 'questions')}>Unanswered Questions</button>
+          <button className="tablinks active" id='unanswered' onClick={(e) => this.handleTabClick(e, 'questions')}>Unanswered Questions</button>
+          <button className="tablinks" id='answered' onClick={(e) => this.handleTabClick(e, 'answers')}>Answered Questions</button>
+
         </div>
 
-        <div id="answers" className="tabcontent" style={{display: 'block'}}>
-          {this.props.answeredQuestions.map((question)=> <QuestionFrame key={question} id={question} />)}
-        </div>
-
-        <div id="questions" className="tabcontent">
+        <div id="questions" className="tabcontent" style={{display: 'block'}}>
           {this.props.unansweredQuestions.map((question)=> <QuestionFrame key={question} id={question} />)}
+        </div>
+
+        <div id="answers" className="tabcontent">
+          {this.props.answeredQuestions.map((question)=> <QuestionFrame key={question} id={question} />)}
         </div>
       </div>
     )
