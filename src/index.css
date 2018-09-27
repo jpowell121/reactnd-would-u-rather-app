@@ -8,7 +8,7 @@ body {
 .container {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 10px;
+  padding: 0;
 }
 
 .center {
@@ -119,7 +119,7 @@ body {
 
 .tabcontent {
   display: none;
-  padding: 6px 12px;
+  padding: 16px 12px;
   border: 4px solid #DDE0E3;
   border-top: none;
 }
@@ -187,4 +187,50 @@ body {
   color: darkgreen;
   background-color: #A6EB99;
   margin: 5px;
+}
+
+/* nav bar */
+
+.active {
+  font-weight:bold;
+}
+
+.nav {
+  width: 100%;
+  float: left;
+  margin: 0 0 1em 0;
+  padding: 0;
+  background-color: #A6EB99;
+  border-bottom: 1px dotted #ccc;  }
+
+.nav ul {
+  list-style: none;
+  width: 800px;
+  margin: 0 auto;
+  padding: 0; }
+
+.nav li {
+  float: left;
+  padding: 8px 15px; }
+
+.nav li a {
+  display: block;
+  text-decoration: none; }
+
+.nav li a:visited {
+  color: darkgreen; }
+
+.nav li a:disabled {
+  color: darkgray; }
+
+.nav li a:hover {
+  color: #A6EB99;
+  background-color: darkgreen; }
+
+.nav-right {
+  float: right;
+}
+
+.login-message {
+  color:black;
 }

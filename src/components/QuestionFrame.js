@@ -25,8 +25,6 @@ class QuestionFrame extends Component {
 
 function mapStateToProps({authedUser, users, questions}, {id}) {
 
-
-
   const authorId = questions[id].author;
   const questionText = questions[id].optionOne.text;
   const author = users[authorId].name;

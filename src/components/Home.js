@@ -23,7 +23,6 @@ class Home extends Component {
     // highlight the selected tab and mark it active.
     document.getElementById(tabName).style.display = "block";
     event.currentTarget.className += " active";
-
   };
 
   render() {
@@ -59,7 +58,7 @@ class Home extends Component {
 function mapStateToProps ({authedUser, users, questions}) {
 
   // if no user logged in, return
-  if (authedUser === '') {
+  if (authedUser === '' || authedUser === null) {
     return {authedUser: '',}
   }
 

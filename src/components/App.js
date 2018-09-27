@@ -7,6 +7,7 @@ import Home from './Home';
 import Login from './Login';
 import Leaderboard from './Leaderboard';
 import NewQuestion from "./NewQuestion";
+import Nav from './Nav'
 
 class App extends Component {
   componentDidMount() {
@@ -19,6 +20,7 @@ class App extends Component {
           <Fragment>
             <LoadingBar/>
             <div className="container">
+              <Nav />
               {this.props.loading === true
               ? null
                 : <div>
