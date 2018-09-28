@@ -17,7 +17,6 @@ body {
 
 
 /* questionFrame CSS */
-
 .questionFrame {
   width: 100%;
   max-width: 590px;
@@ -65,6 +64,8 @@ body {
   cursor: pointer;
   background-color: lightgreen;
   font-size: 16px;
+  text-decoration: none;
+  color: darkgreen;
 }
 
 .qf-info-button:hover {
@@ -125,7 +126,6 @@ body {
 }
 
 /* login form */
-
 .login-form {
   width: 100%;
   max-width: 590px;
@@ -190,7 +190,6 @@ body {
 }
 
 /* nav bar */
-
 .active {
   font-weight:bold;
 }

@@ -8,6 +8,7 @@ import Login from './Login';
 import Leaderboard from './Leaderboard';
 import NewQuestion from "./NewQuestion";
 import Nav from './Nav'
+import Poll from './Poll'
 
 class App extends Component {
   componentDidMount() {
@@ -28,6 +29,7 @@ class App extends Component {
                   <Route path='/login' exact component={Login} />
                   <Route path='/leaderboard' exact component={Leaderboard} />
                   <Route path='/new' exact component={NewQuestion} />
+                  <Route path='/poll/:id'  component={Poll} />
                 </div>}
             </div>
           </Fragment>

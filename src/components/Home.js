@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import QuestionFrame from './QuestionFrame'
+import QuestionFrame from './CardFrame'
 import { Redirect } from 'react-router-dom'
 
 
@@ -44,11 +44,11 @@ class Home extends Component {
         </div>
 
         <div id="questions" className="tabcontent" style={{display: 'block'}}>
-          {this.props.unansweredQuestions.map((question)=> <QuestionFrame key={question} id={question} />)}
+          {this.props.unansweredQuestions.map((question)=> <QuestionFrame key={question} id={question} type='card' />)}
         </div>
 
         <div id="answers" className="tabcontent">
-          {this.props.answeredQuestions.map((question)=> <QuestionFrame key={question} id={question} />)}
+          {this.props.answeredQuestions.map((question)=> <QuestionFrame key={question} id={question} type='card' />)}
         </div>
       </div>
     )

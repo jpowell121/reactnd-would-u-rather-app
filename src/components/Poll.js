@@ -1,12 +1,24 @@
 import React, { Component } from 'react'
+import QuestionFrame from './CardFrame'
+import {connect} from "react-redux";
 
 class Poll extends Component {
 
   render() {
     return (
-      <div>Poll</div>
+      <QuestionFrame id={this.props.id} type='pollResult'></QuestionFrame>
     )
   }
 }
 
-export default Poll
+function mapStateToProps( {authedUser}, props ) {
+
+  const { id } = props.match.params;
+
+  return {
+    authedUser,
+    id,
+  }
+}
+
+export default connect(mapStateToProps)(Poll)

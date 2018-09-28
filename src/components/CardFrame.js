@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import CardClip from './CardClip'
+import PollResult from './PollResult'
 import QuestionClip from './QuestionClip'
+import PropTypes from 'prop-types'
 
-class QuestionFrame extends Component {
+class CardFrame extends Component {
 
   render() {
     return (
@@ -15,9 +18,17 @@ class QuestionFrame extends Component {
             className='qf-avatar'
           />
           <div className="qf-divider"></div>
-          {/* TODO - need to add logic here to select right subcomponent - needs to be passed in from higher level component */}
-          <QuestionClip questionText={this.props.questionText} />
-        </div>
+          {/* use incoming type prop to determine which content to draw */}
+          {this.props.type === 'card' &&
+            <CardClip questionText={this.props.questionText} id={this.props.id}/>
+          }
+          {this.props.type === 'pollResult' &&
+            <PollResult />
+          }
+          {this.props.type === 'question' &&
+            <QuestionClip />
+          }
+          </div>
       </div>
     )
   }
@@ -39,4 +50,9 @@ function mapStateToProps({authedUser, users, questions}, {id}) {
 
 }
 
-export default connect(mapStateToProps)(QuestionFrame)
+CardFrame.propTypes = {
+  type: PropTypes.oneOf(['card', 'pollResult', 'question']),
+};
+
+
+export default connect(mapStateToProps)(CardFrame)
