@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import QuestionFrame from './CardFrame'
+import CardFrame from './CardFrame'
 import { Redirect } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 
 class Home extends Component {
@@ -38,23 +39,36 @@ class Home extends Component {
     return (
       <div>
         <div className="tab">
-          <button className="tablinks active" id='unanswered' onClick={(e) => this.handleTabClick(e, 'questions')}>Unanswered Questions</button>
-          <button className="tablinks" id='answered' onClick={(e) => this.handleTabClick(e, 'answers')}>Answered Questions</button>
+          <button className="tablinks active"
+                  id='unanswered'
+                  onClick={(e) => this.handleTabClick(e, 'questions')}>Unanswered Questions</button>
+          <button className="tablinks"
+                  id='answered'
+                  onClick={(e) => this.handleTabClick(e, 'answers')}>Answered Questions</button>
 
         </div>
 
         <div id="questions" className="tabcontent" style={{display: 'block'}}>
-          {this.props.unansweredQuestions.map((question)=> <QuestionFrame key={question} id={question} type='card' />)}
+          {this.props.unansweredQuestions.map((question)=>
+            <CardFrame key={question}
+                       id={question}
+                       status='questions'
+                       type='card' />
+          )}
         </div>
 
         <div id="answers" className="tabcontent">
-          {this.props.answeredQuestions.map((question)=> <QuestionFrame key={question} id={question} type='card' />)}
+          {this.props.answeredQuestions.map((question)=>
+            <CardFrame key={question}
+                       id={question}
+                       status='answers'
+                       type='card' />
+          )}
         </div>
       </div>
     )
   }
 }
-
 
 function mapStateToProps ({authedUser, users, questions}) {
 
@@ -78,5 +92,10 @@ function mapStateToProps ({authedUser, users, questions}) {
     unansweredQuestions: unansweredQuestions,
   }
 }
+
+Home.propTypes = {
+  status: PropTypes.oneOf(['questions', 'answers']),
+};
+
 
 export default connect(mapStateToProps)(Home)

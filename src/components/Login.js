@@ -49,7 +49,11 @@ class Login extends Component {
           <form className="login-user-select-form" onSubmit={this.handleSubmit}>
             <select ref="userSelected" id="user-select" className='login-user-select'>
               {this.props.userKeys.map((appUser) => {
-                  return <option key={appUser} className='login-user-select' value={appUser}>{this.props.users[appUser].name}</option>
+                  return <option key={appUser}
+                                 className='login-user-select'
+                                 value={appUser}>
+                            {this.props.users[appUser].name}
+                         </option>
                 }
               )}
             </select>

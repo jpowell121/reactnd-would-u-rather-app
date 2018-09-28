@@ -20,7 +20,10 @@ class CardFrame extends Component {
           <div className="qf-divider"></div>
           {/* use incoming type prop to determine which content to draw */}
           {this.props.type === 'card' &&
-            <CardClip questionText={this.props.questionText} id={this.props.id}/>
+            <CardClip
+              questionText={this.props.questionText}
+              id={this.props.id}
+              status={this.props.status}/>
           }
           {this.props.type === 'pollResult' &&
             <PollResult />
@@ -40,7 +43,6 @@ function mapStateToProps({authedUser, users, questions}, {id}) {
   const questionText = questions[id].optionOne.text;
   const author = users[authorId].name;
   const avatarURL = users[authorId].avatarURL;
-
 
   return {
     questionText: questionText,

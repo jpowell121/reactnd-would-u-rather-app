@@ -8,7 +8,9 @@ class CardClip extends Component {
       <div className="qf-info">
         <span>Would you rather....</span>
         <p>...{this.props.questionText}...</p>
-        <Link to={`/poll/${this.props.id}`} className='qf-info-button'>View Poll</Link>
+        <Link to={`/poll/${this.props.id}`}
+              className='qf-info-button'>
+          {this.props.status === 'answers' ? 'View Poll' : 'Take Poll'}</Link>
       </div>
     )
   }
