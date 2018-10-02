@@ -53,6 +53,10 @@ body {
   font-weight: bold;
 }
 
+.qf-info > h2 {
+  margin: 0;
+}
+
 .qf-info-button {
   text-transform: uppercase;
   display: flex;
@@ -69,7 +73,7 @@ body {
 }
 
 .qf-info-button:hover {
-
+  background-color: lime;
 }
 
 .qf-divider {
@@ -87,6 +91,16 @@ body {
   display: flex;
   align-self: center;
 }
+
+.qf-info li {
+  list-style: none;
+  margin: 10px;
+}
+
+.qf-info input[type="radio"] {
+  margin-right: 10px;
+}
+
 
 /* tabs on main page (Home component) */
 .tab {

@@ -29,7 +29,9 @@ class CardFrame extends Component {
             <PollResult />
           }
           {this.props.type === 'question' &&
-            <QuestionClip />
+            <QuestionClip
+              id={this.props.id}
+            />
           }
           </div>
       </div>

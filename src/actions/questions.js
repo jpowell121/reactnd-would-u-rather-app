@@ -6,3 +6,13 @@ export function receiveQuestions (questions) {
     questions,
   }
 }
+
+
+// asynchronous actions
+
+
+
+
+
+
+

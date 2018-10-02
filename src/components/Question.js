@@ -1,12 +1,20 @@
 import React, { Component } from 'react'
-import QuestionFrame from './CardFrame'
+import CardFrame from './CardFrame'
 import {connect} from "react-redux";
+import { Redirect } from 'react-router-dom'
 
 class Question extends Component {
 
+
   render() {
+
+    // if users is not logged in, redirect to login
+    if (this.props.authedUser === '') {
+      return <Redirect to='/'/>
+    }
+
     return (
-      <QuestionFrame id={this.props.id} type='question'></QuestionFrame>
+      <CardFrame id={this.props.id} type='question'></CardFrame>
     )
   }
 }
