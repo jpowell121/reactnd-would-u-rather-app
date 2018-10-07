@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { handleUserAnswerQuestion} from "../actions/users";
+import { handleAnswerUpdateUser } from "../actions/users";
 import { Redirect } from 'react-router-dom'
 
 
@@ -20,7 +20,8 @@ class QuestionClip extends Component {
 
     const { dispatch, authedUser, id } = this.props;
 
-    dispatch(handleUserAnswerQuestion({
+    // update user store
+    dispatch(handleAnswerUpdateUser({
       authedUser: authedUser,
       qid: id,
       answer: this.state.option,
@@ -29,8 +30,6 @@ class QuestionClip extends Component {
     this.setState({
       answered: true,
     });
-
-
   };
 
   render() {

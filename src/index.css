@@ -92,6 +92,19 @@ body {
   align-self: center;
 }
 
+.qf-alldone-body{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.qf-alldone {
+  height: 180px;
+  margin: 10px;
+  display: flex;
+  align-self: center;
+}
+
 .qf-info li {
   list-style: none;
   margin: 10px;
@@ -101,6 +114,11 @@ body {
   margin-right: 10px;
 }
 
+.qf-message {
+  display:flex;
+  margin: 5px;
+  justify-content: center
+}
 
 /* tabs on main page (Home component) */
 .tab {
@@ -197,6 +215,8 @@ body {
   margin: 5px;
 }
 
+
+
 .login-button {
   color: darkgreen;
   background-color: #A6EB99;
@@ -244,6 +264,5 @@ body {
   float: right;
 }
 
-.login-message {
-  color:black;
-}
+
+

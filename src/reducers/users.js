@@ -1,4 +1,4 @@
-import {RECEIVE_USERS, USER_ANSWER_QUESTION} from "../actions/users";
+import {RECEIVE_USERS, ANSWER_UPDATE_USER} from "../actions/users";
 
 export default function users (state={}, action) {
 
@@ -10,7 +10,7 @@ export default function users (state={}, action) {
         ...action.users,
       };
 
-    case USER_ANSWER_QUESTION:
+    case ANSWER_UPDATE_USER:
       return {
         ...state,
         [action.authedUser]: {

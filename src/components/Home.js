@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import CardFrame from './CardFrame'
 import { Redirect } from 'react-router-dom'
+import allDone from '../images/thumbs_up.png'
 import PropTypes from 'prop-types'
 
 
@@ -49,21 +50,34 @@ class Home extends Component {
         </div>
 
         <div id="questions" className="tabcontent" style={{display: 'block'}}>
-          {this.props.unansweredQuestions.map((question)=>
-            <CardFrame key={question}
-                       id={question}
-                       status='questions'
-                       type='card' />
-          )}
+          {this.props.unansweredQuestions.length ?
+            this.props.unansweredQuestions.map((question)=>
+              <CardFrame key={question}
+                         id={question}
+                         status='questions'
+                         type='card' />
+            ) :
+            <div className="qf-alldone-body">
+              <img
+                src={allDone}
+                alt='All questions answered'
+                className='qf-alldone'
+              />
+              <p className='qf-message'>Great! You have answered all the questions</p>
+            </div>
+          }
         </div>
 
         <div id="answers" className="tabcontent">
-          {this.props.answeredQuestions.map((question)=>
-            <CardFrame key={question}
-                       id={question}
-                       status='answers'
-                       type='card' />
-          )}
+          {this.props.answeredQuestions.length ?
+            this.props.answeredQuestions.map((question)=>
+              <CardFrame key={question}
+                         id={question}
+                         status='answers'
+                         type='card' />
+            ) :
+            <p>Get cracking! You haven't answered any questions!</p>
+          }
         </div>
       </div>
     )

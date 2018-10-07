@@ -1,8 +1,10 @@
 import {saveQuestionAnswer} from "../utils/API";
+import { showLoading, hideLoading } from 'react-redux-loading'
+import { answerUpdateQuestion } from './questions'
 
 
 export const RECEIVE_USERS = 'RECEIVE_USERS';
-export const USER_ANSWER_QUESTION = 'USER_ANSWER_QUESTION';
+export const ANSWER_UPDATE_USER = 'ANSWER_UPDATE_USER';
 
 export function receiveUsers (users) {
   return {
@@ -11,26 +13,28 @@ export function receiveUsers (users) {
   }
 }
 
-function userAnswerQuestion ({ authedUser, qid, answer }) {
+function answerUpdateUser ({ authedUser, qid, answer }) {
   return {
-    type: USER_ANSWER_QUESTION,
+    type: ANSWER_UPDATE_USER,
     authedUser,
     qid,
     answer,
   }
 }
 
-
 // asynchronous actions
-export function handleUserAnswerQuestion (info) {
+export function handleAnswerUpdateUser (info) {
   return (dispatch) => {
-    dispatch(userAnswerQuestion(info));
 
+    dispatch(showLoading());
     return saveQuestionAnswer(info)
       .catch(() => {
         console.warn('Error in handleUserAnswerQuestion', info);
-        dispatch(userAnswerQuestion(info));
         alert('There was an error saving an answered question. Try again.');
       })
+      .then(dispatch(answerUpdateUser(info)))
+      .then(dispatch(answerUpdateQuestion(info)))
+      .then(dispatch(hideLoading()))
+
   }
 }
