@@ -112,11 +112,27 @@ body {
     align-items: left;
 }
 
+.qf-poll-leader {
+    border: 4px solid green;
+    margin: 10px;
+    padding: 10px;
+    flex-direction: column;
+    align-items: left;
+    background-color: #E3FBF7;
+}
+
 .qf-poll > p {
     font-weight: bold;
     display: flex;
     justify-content: center;
 }
+
+.qf-poll-leader > p {
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+
 
 .qf-progressbar {
     background-color: #DDE0E3;

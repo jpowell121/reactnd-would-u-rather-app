@@ -12,17 +12,17 @@ class PollResult extends Component {
     return (
       <div className="qf-info">
         <span>Results:</span>
-        <div className="qf-poll" style={{backgroundColor: "#E3FBF7", border: "4px green solid"}}>
+        <div className={this.props.optionOnePercent > 50 ? 'qf-poll-leader' : 'qf-poll'} >
           <p>Would you rather {this.props.optionOne}?</p>
           <div className='qf-progressbar'>
-            <div style={{width: `${this.props.optionOnePercent}%`}}></div>
+            <div style={{width: `${this.props.optionOnePercent}%`, textAlign: 'center'}}>{this.props.optionOnePercent.toFixed(1)}%</div>
           </div>
           <p>{this.props.optionOneVotes} out of {this.props.totalVotes} votes</p>
         </div>
-        <div className="qf-poll">
+        <div className={this.props.optionTwoPercent > 50 ? 'qf-poll-leader' : 'qf-poll'}>
           <p>Would you rather {this.props.optionTwo}?</p>
           <div className='qf-progressbar'>
-            <div style={{width: `${this.props.optionTwoPercent}%`}}></div>
+            <div style={{width: `${this.props.optionTwoPercent}%`, textAlign: 'center'}}>{this.props.optionTwoPercent.toFixed(1)}%</div>
           </div>
           <p>{this.props.optionTwoVotes} out of {this.props.totalVotes} votes</p>
         </div>
