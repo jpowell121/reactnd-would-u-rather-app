@@ -46,7 +46,6 @@ class Home extends Component {
           <button className="tablinks"
                   id='answered'
                   onClick={(e) => this.handleTabClick(e, 'answers')}>Answered Questions</button>
-
         </div>
 
         <div id="questions" className="tabcontent" style={{display: 'block'}}>

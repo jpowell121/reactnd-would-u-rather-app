@@ -1,4 +1,5 @@
 import {RECEIVE_USERS, ANSWER_UPDATE_USER} from "../actions/users";
+import {ADD_QUESTION} from "../actions/questions";
 
 export default function users (state={}, action) {
 
@@ -16,6 +17,18 @@ export default function users (state={}, action) {
         [action.authedUser]: {
           ...state[action.authedUser],
           answers: {...state[action.authedUser].answers, [action.qid]: action.answer}
+        }
+      };
+
+    case ADD_QUESTION:
+
+      const { question } = action;
+
+      return {
+        ...state,
+        [question.author]: {
+          ...state[question.author],
+          questions: [...state[question.author].questions, question.id]
         }
       };
 

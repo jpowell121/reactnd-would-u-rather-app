@@ -26,7 +26,9 @@ class CardFrame extends Component {
               status={this.props.status}/>
           }
           {this.props.type === 'pollResult' &&
-            <PollResult />
+            <PollResult
+              id={this.props.id}
+            />
           }
           {this.props.type === 'question' &&
             <QuestionClip

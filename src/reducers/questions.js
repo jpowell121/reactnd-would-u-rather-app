@@ -1,4 +1,4 @@
-import {ANSWER_UPDATE_QUESTION, RECEIVE_QUESTIONS} from "../actions/questions";
+import {ANSWER_UPDATE_QUESTION, RECEIVE_QUESTIONS, ADD_QUESTION } from "../actions/questions";
 
 export default function questions (state={}, action) {
 
@@ -20,6 +20,15 @@ export default function questions (state={}, action) {
             votes: [...state[action.qid][action.answer].votes, action.authedUser]
           }
         }
+      };
+
+    case ADD_QUESTION:
+
+      return {
+        ...state,
+        //...action.questions,
+        [action.question.id]: action.question
+
       };
 
     default:

@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
-import QuestionFrame from './CardFrame'
+import CardFrame from './CardFrame'
 import {connect} from "react-redux";
 
 class Poll extends Component {
 
   render() {
     return (
-      <QuestionFrame id={this.props.id} type='pollResult'></QuestionFrame>
+      <div>
+        <CardFrame id={this.props.id} type='pollResult'></CardFrame>
+      </div>
     )
   }
 }
