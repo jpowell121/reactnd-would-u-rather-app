@@ -6,13 +6,15 @@ import { Redirect } from 'react-router-dom'
 class PollResult extends Component {
 
   render() {
-    if (this.props.authedUser === "") {
+    // if user is not logged in, redirect to login
+    if (this.props.author === '' || this.props.author === undefined) {
       return <Redirect to='/'/>
     }
     return (
       <div className="qf-info">
         <span>Results:</span>
         <div className={this.props.optionOnePercent > 50 ? 'qf-poll-leader' : 'qf-poll'} >
+          <div className='qf-poll-badge' style={{visibility: this.props.authVote===1 ? 'visible' : 'hidden'}}>Your Pick</div>
           <p>Would you rather {this.props.optionOne}?</p>
           <div className='qf-progressbar'>
             <div style={{width: `${this.props.optionOnePercent}%`, textAlign: 'center'}}>{this.props.optionOnePercent.toFixed(1)}%</div>
@@ -20,6 +22,7 @@ class PollResult extends Component {
           <p>{this.props.optionOneVotes} out of {this.props.totalVotes} votes</p>
         </div>
         <div className={this.props.optionTwoPercent > 50 ? 'qf-poll-leader' : 'qf-poll'}>
+          <div className='qf-poll-badge' style={{visibility: this.props.authVote===2 ? 'visible' : 'hidden'}}>Your Pick</div>
           <p>Would you rather {this.props.optionTwo}?</p>
           <div className='qf-progressbar'>
             <div style={{width: `${this.props.optionTwoPercent}%`, textAlign: 'center'}}>{this.props.optionTwoPercent.toFixed(1)}%</div>
@@ -45,7 +48,6 @@ function mapStateToProps ({authedUser, questions}, {id}) {
   // get percentage for each answer
   const optionOnePercent = optionOneVotes / totalVotes * 100;
   const optionTwoPercent = optionTwoVotes / totalVotes * 100;
-
 
   return {
     id,

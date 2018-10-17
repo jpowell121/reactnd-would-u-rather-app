@@ -110,15 +110,18 @@ body {
     padding: 10px;
     flex-direction: column;
     align-items: left;
+    position: relative;
 }
 
 .qf-poll-leader {
-    border: 4px solid green;
+    border: 4px solid darkgreen;
     margin: 10px;
     padding: 10px;
     flex-direction: column;
     align-items: left;
-    background-color: #E3FBF7;
+    background-color: #A6EB99;
+    color: darkgreen;
+    position: relative;
 }
 
 .qf-poll > p {
@@ -133,6 +136,23 @@ body {
     justify-content: center;
 }
 
+.qf-poll-badge {
+    width:80px;
+    height:80px;
+    border-radius:40px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 80px;
+    border: 2px solid green;
+    background-color: #3FCDA6;
+    position:absolute;
+    top:-40px;
+    right:-40px;
+    font-weight: bolder;
+    color: white;
+    visibility: visible;
+}
+
 
 .qf-progressbar {
     background-color: #DDE0E3;
@@ -141,9 +161,10 @@ body {
 }
 
 .qf-progressbar > div {
-    background-color: #3FCDA6;
+    background-color: darkgreen;
     height: 20px;
     border-radius: 10px;
+    color: white;
 }
 
 .qf-info li {
