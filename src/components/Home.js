@@ -96,7 +96,7 @@ function mapStateToProps ({authedUser, users, questions}) {
   // this gets keys of answers by authed users
   const answeredQuestions = Object.keys(users[authedUser].answers);
 
-  // fine unanswered (remaining) questions
+  // find unanswered (remaining) questions
   const unansweredQuestions = questionIds.filter(value => -1 === answeredQuestions.indexOf(value));
 
   return {

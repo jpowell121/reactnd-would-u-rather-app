@@ -42,6 +42,13 @@ class Nav extends Component {
                 <span className='login-message'>Hello, {this.props.loggedUser}!</span>
             </li>
             <li>
+              <img
+                src={this.props.avatarURL}
+                alt={this.props.author}
+                className='nav-avatar'
+              />
+            </li>
+            <li>
               <a onClick={this.handleLogout}>
                 Logout
               </a>
@@ -61,10 +68,14 @@ function mapStateToProps ( {authedUser, users} ) {
   }
 
   const loggedUser = users[authedUser].name;
+  const author = users[authedUser].name;
+  const avatarURL = users[authedUser].avatarURL;
 
   return {
     authedUser: authedUser,
     loggedUser: loggedUser,
+    author,
+    avatarURL,
   }
 }
 

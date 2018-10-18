@@ -7,7 +7,7 @@ class PollResult extends Component {
 
   render() {
     // if user is not logged in, redirect to login
-    if (this.props.author === '' || this.props.author === undefined) {
+    if (this.props.authedUser === "") {
       return <Redirect to='/'/>
     }
     return (
@@ -35,6 +35,11 @@ class PollResult extends Component {
 }
 
 function mapStateToProps ({authedUser, questions}, {id}) {
+
+  // if no user logged in, return
+  if (authedUser === '' || authedUser === null) {
+    return {authedUser: '',}
+  }
 
   // get counts of votes
   const optionOneVotes = questions[id].optionOne.votes.length;

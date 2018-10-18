@@ -144,7 +144,7 @@ body {
     vertical-align: middle;
     line-height: 80px;
     border: 2px solid green;
-    background-color: #3FCDA6;
+    background-color: darkgreen;
     position:absolute;
     top:-40px;
     right:-40px;
@@ -152,7 +152,6 @@ body {
     color: white;
     visibility: visible;
 }
-
 
 .qf-progressbar {
     background-color: #DDE0E3;
@@ -406,4 +405,12 @@ button[disabled] {
     border: 1px solid #999999;
     background-color: #cccccc;
     color: #FFF;
+}
+
+.nav-avatar {
+    height: 18px;
+    border-radius: 9px;
+    margin: 0;
+    display: flex;
+    align-self: center;
 }
