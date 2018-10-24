@@ -14,7 +14,13 @@ You can find the most recent version of this application code [here](https://git
 
 ## Build Instructions
 
-Here I will put the build instructions.
+Build the application using the following steps:
+
+1.  Make sure that you have Node v8 or above installed.
+2.  Clone this repo using `git clone --depth=1 https://github.com/react-boilerplate/react-boilerplate.git`
+3.  Move to the appropriate directory: `cd react-would-u-rather-app`.<br />
+4.  Run `yarn install` in order to install dependencies.<br />
+5.  At this point you can run `yarn start` to see the app at `http://localhost:3000`._
 
 
 ## Design Process
@@ -34,7 +40,7 @@ I followed the design suggestions set out by the Udacity React Nanodegree progra
 
 ## Coding Process
 
-Build the application using the following steps:
+
 
 1. Cleaned up create-react-app basic structure, started this README.md and also cleaned up files that will not be used.
 2. Created directory structure in Rails fashion.
