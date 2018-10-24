@@ -17,7 +17,7 @@ You can find the most recent version of this application code [here](https://git
 Build the application using the following steps:
 
 1.  Make sure that you have Node v8 or above installed.
-2.  Clone this repo using `git clone --depth=1 https://github.com/react-boilerplate/react-boilerplate.git`
+2.  Clone this repo using `git clone --depth=1 https://github.com/jpowell121/reactnd-would-u-rather-app.git`
 3.  Move to the appropriate directory: `cd react-would-u-rather-app`.<br />
 4.  Run `yarn install` in order to install dependencies.<br />
 5.  At this point you can run `yarn start` to see the app at `http://localhost:3000`._
