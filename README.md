@@ -56,8 +56,9 @@ I followed the design suggestions set out by the Udacity React Nanodegree progra
 The final product structure is as follows:
 
 ```
-my-app/
+reactnd-would-u-rather-app/
   README.md
+  WouldYouRather_Design.pdf
   node_modules/
   package.json
   public/
@@ -71,6 +72,21 @@ my-app/
         users.js
     /components
         App.js
+        CardClip.js
+        CardFrame.js
+        Home.js
+        Leaderboard.js
+        LeaderEntry.js
+        Login.js
+        Nav.js
+        NewQuestion.js
+        Poll.js
+        PollResult.js
+        Question.js
+        QuestionClip.js
+    /images
+        question_man.png
+        thumbs_up.png    
     /middleware
         index.js
         logger.js
