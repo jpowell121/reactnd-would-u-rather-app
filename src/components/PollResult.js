@@ -8,7 +8,7 @@ class PollResult extends Component {
   render() {
     // if user is not logged in, redirect to login
     if (this.props.authedUser === "") {
-      return <Redirect to='/'/>
+      return <Redirect to='/login'/>
     }
     return (
       <div className="qf-info">

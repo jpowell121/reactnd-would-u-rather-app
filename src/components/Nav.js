@@ -67,6 +67,7 @@ function mapStateToProps ( {authedUser, users} ) {
     return {authedUser: '',}
   }
 
+  // get props relevant to the current logged in user
   const loggedUser = users[authedUser].name;
   const author = users[authedUser].name;
   const avatarURL = users[authedUser].avatarURL;

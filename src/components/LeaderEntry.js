@@ -47,6 +47,7 @@ class LeaderEntry extends Component {
 
 function mapStateToProps ({ users }, {id}) {
 
+  // get props relevant to the current user
   const avatarURL = users[id].avatarURL;
   const author = users[id].name;
   const questionsAnswered =  Object.keys(users[id].answers).length;

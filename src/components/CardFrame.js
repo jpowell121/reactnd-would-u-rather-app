@@ -53,6 +53,7 @@ function mapStateToProps({authedUser, users, questions}, {id}) {
     }
   }
 
+  // get props relevant to the current question
   const authorId = questions[id].author;
   const questionText = questions[id].optionOne.text;
   const author = users[authorId].name;
