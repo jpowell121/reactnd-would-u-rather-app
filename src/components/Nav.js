@@ -28,13 +28,13 @@ class Nav extends Component {
             </NavLink>
           </li>
           <li>
-            <NavLink to='/new' activeClassName='active'>
+            <NavLink to='/add' activeClassName='active'>
               New Question
             </NavLink>
           </li>
           <li>
             <NavLink to='/leaderboard' activeClassName='active'>
-              Leader Board
+              Leaderboard
             </NavLink>
           </li>
           <div className='nav-right'  style={ this.props.authedUser ? { display:'block'} : {display : 'none'}}>

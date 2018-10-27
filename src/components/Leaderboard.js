@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import LeaderEntry from './LeaderEntry'
 import {connect} from "react-redux";
 
@@ -6,6 +7,11 @@ import {connect} from "react-redux";
 class Leaderboard extends Component {
 
   render() {
+    // if user is not logged in, redirect to login
+    if (this.props.authedUser === '' || this.props.authedUser === undefined) {
+      return <Redirect to='/'/>
+    }
+
     return (
       <div className='leaderboard'>
         <div className='leaderboard-header'>
@@ -23,7 +29,7 @@ class Leaderboard extends Component {
   }
 }
 
-function mapStateToProps( { users }) {
+function mapStateToProps( { authedUser, users }) {
 
   // this gets ids of the users
   const userIds = Object.keys(users);
@@ -36,6 +42,7 @@ function mapStateToProps( { users }) {
   return {
     users,
     userIds,
+    authedUser,
   }
 }
 
