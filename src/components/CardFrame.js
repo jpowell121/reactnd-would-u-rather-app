@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import CardClip from './CardClip'
 import PollResult from './PollResult'
@@ -8,6 +9,9 @@ import PropTypes from 'prop-types'
 class CardFrame extends Component {
 
   render() {
+    if (this.props.author === null) {
+      return <Redirect to='/'/>
+    }
     return (
       <div className="questionFrame">
         <div className="qf-header">{this.props.author} asks:</div>
@@ -42,6 +46,12 @@ class CardFrame extends Component {
 }
 
 function mapStateToProps({authedUser, users, questions}, {id}) {
+
+  if (questions[id]===undefined) {
+    return {
+      author: null,
+    }
+  }
 
   const authorId = questions[id].author;
   const questionText = questions[id].optionOne.text;

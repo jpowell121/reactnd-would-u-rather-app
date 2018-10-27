@@ -93,8 +93,18 @@ function mapStateToProps ({authedUser, users, questions}) {
   // this gets keys of the questions
   const questionIds = Object.keys(questions);
 
+  // sort questions from most recently created to least recently created.
+  questionIds.sort(function(a, b) {
+    return questions[a].timestamp  < questions[b].timestamp;
+  });
+
   // this gets keys of answers by authed users
   const answeredQuestions = Object.keys(users[authedUser].answers);
+
+  // sort answeredQuestions from most recently created to least recently created.
+  answeredQuestions.sort(function(a, b) {
+    return questions[a].timestamp  < questions[b].timestamp;
+  });
 
   // find unanswered (remaining) questions
   const unansweredQuestions = questionIds.filter(value => -1 === answeredQuestions.indexOf(value));
