@@ -108,30 +108,30 @@ reactnd-would-u-rather-app/
 
 The following is a summary of what each component responsibility is:
 
-###App
+### App
 Handles routing and initial data load.
-###Login
+### Login
 Select the user to login.
-###Home
+### Home
 Displays main home page; defaults to unanswered questions. Has a tabbed view to show answered questions.
-###Nav
+### Nav
 Handles navigation component and log in / log out of application.
-###CardFrame
+### CardFrame
 Reusable component that renders avatar, users name, and basic frame used for multiple views. Loads multiple CardFrame components.
-###CardClip
+### CardClip
 Reusable component for both taking and viewing poll. Based on which tab the Home component is rendering.
-###Poll
+### Poll
 Component to handle an individual poll - /poll/:id
-###PollResult
+### PollResult
 Component to handle a poll result - the most complex component in the app and could use some refactoring likely.
-###Question
+### Question
 Component to handle a question
-###QuestionClip
+### QuestionClip
 Component to display for to let user answer a question.
-###NewQuestion
+### NewQuestion
 Component to capture a new question from the user.
-###Leaderboard
+### Leaderboard
 Component to display leaderboard form
-###LeaderEntry
+### LeaderEntry
 Component to display individual user leaderboard entry
 
