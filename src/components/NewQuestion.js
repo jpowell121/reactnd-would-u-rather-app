@@ -5,32 +5,31 @@ import { handleAddQuestion } from "../actions/questions";
 
 class NewQuestion extends Component {
   state = {
-    answered: false,
+    created: false,
     optionOneText: '',
     optionTwoText: '',
   };
 
 
   handleChange = (e) => {
-    const controlId = e.target.id;
-    const text = e.target.value;
+    const { id, value }  = e.target;
 
-    this.setState(() => ({
-      [controlId]: text,
-    }))
+    this.setState({
+      [id]: value,
+    })
   };
 
   handleSubmitNewQuestion = (event) => {
     event.preventDefault();
 
     const { optionOneText, optionTwoText } = this.state;
-    const { dispatch, author } = this.props;
+    const { author } = this.props;
 
-    dispatch(handleAddQuestion({optionOneText, optionTwoText, author}));
+    this.props.handleAddQuestion({optionOneText, optionTwoText, author});
 
-    this.setState(() => ({
-      answered: true,
-    }))
+    this.setState({
+      created: true,
+    })
   };
 
   render() {
@@ -38,8 +37,8 @@ class NewQuestion extends Component {
     if (this.props.author === '' || this.props.author === undefined) {
       return <Redirect to='/'/>
     }
-    // if the question is answered, redirect to home screen
-    if (this.state.answered === true) {
+    // if the question is created, redirect to home screen
+    if (this.state.created) {
       return <Redirect to='/'/>
     }
     return (
@@ -51,10 +50,21 @@ class NewQuestion extends Component {
           <p>Complete the question:</p>
           <form className="new-question-form" onSubmit={this.handleSubmitNewQuestion}>
             <span>Would you rather...</span>
-            <input id="optionOneText" placeholder='Enter option one text here' onChange={this.handleChange} />
+            <input
+              id="optionOneText"
+              placeholder='Enter option one text here'
+              onChange={this.handleChange}
+            />
             <h3><span>Or</span></h3>
-            <input id='optionTwoText' placeholder='Enter option two text here' onChange={this.handleChange} />
-            <button disabled={!this.state.optionOneText || !this.state.optionTwoText } className='new-question-button'>Submit</button>
+            <input
+              id='optionTwoText'
+              placeholder='Enter option two text here'
+              onChange={this.handleChange}
+            />
+            <button
+              disabled={!this.state.optionOneText || !this.state.optionTwoText }
+              className='new-question-button'>Submit
+            </button>
           </form>
         </div>
       </div>
@@ -69,5 +79,9 @@ function mapStateToProps( {authedUser} ) {
   }
 }
 
+const mapDispatchToProps = {
+  handleAddQuestion,
+};
 
-export default connect(mapStateToProps)(NewQuestion)
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewQuestion)
