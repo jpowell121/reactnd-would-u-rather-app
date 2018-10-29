@@ -13,32 +13,32 @@ class NewQuestion extends Component {
 
   handleChange = (e) => {
     const { id, value }  = e.target;
-
-    this.setState({
-      [id]: value,
-    })
+    this.setState({ [id]: value })
   };
 
   handleSubmitNewQuestion = (event) => {
     event.preventDefault();
-
     const { optionOneText, optionTwoText } = this.state;
-    const { author } = this.props;
+    const { author, newPoll } = this.props;
+    newPoll({
+      optionOneText,
+      optionTwoText,
+      author
+    });
 
-    this.props.handleAddQuestion({optionOneText, optionTwoText, author});
-
-    this.setState({
-      created: true,
-    })
+    this.setState({ created: true })
   };
 
   render() {
+    const { author } = this.props;
+    const { created, optionOneText, optionTwoText } = this.state;
+
     // if user is not logged in, redirect to login
-    if (this.props.author === '' || this.props.author === undefined) {
+    if (!author) {
       return <Redirect to='/'/>
     }
     // if the question is created, redirect to home screen
-    if (this.state.created) {
+    if (created) {
       return <Redirect to='/'/>
     }
     return (
@@ -62,8 +62,10 @@ class NewQuestion extends Component {
               onChange={this.handleChange}
             />
             <button
-              disabled={!this.state.optionOneText || !this.state.optionTwoText }
-              className='new-question-button'>Submit
+              disabled={!optionOneText || !optionTwoText }
+              className='new-question-button'
+            >
+              Submit
             </button>
           </form>
         </div>
@@ -79,9 +81,13 @@ function mapStateToProps( {authedUser} ) {
   }
 }
 
-const mapDispatchToProps = {
-  handleAddQuestion,
-};
+function mapDispatchToProps(dispatch)  {
+  return {
+    newPoll: function (poll) {
+      dispatch(handleAddQuestion({ ...poll}));
+    }
+  };
+}
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewQuestion)
