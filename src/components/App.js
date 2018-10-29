@@ -13,7 +13,7 @@ import Question from './Question'
 
 class App extends Component {
   componentDidMount() {
-    this.props.handleInitialData();
+    this.props.getData();
   }
 
   render() {
@@ -43,15 +43,21 @@ class App extends Component {
   }
 }
 
+function mapDispatchToProps(dispatch)  {
+  return {
+    getData: function() {
+      dispatch(handleInitialData());
+    }
+  };
+}
+
+
 function mapStateToProps ({ authedUser }) {
   return {
     loading: authedUser === null
   }
 }
 
-const mapDispatchToProps = {
-  handleInitialData,
-};
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
