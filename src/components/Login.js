@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import logo from '../images/question_man.png'
 import { setAuthedUser } from '../actions/authedUser'
-import { Redirect } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 
 class Login extends Component {
   state = {
@@ -12,15 +12,13 @@ class Login extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    const { dispatch } = this.props;
+    const { setUser } = this.props;
 
     // set the redux state to selected user
-    dispatch(setAuthedUser(this.refs.userSelected.value));
+    setUser(this.refs.userSelected.value);
 
     // set state so next render will send user to the Home component ('\' route)
-    this.setState(() => ({
-      toHome: true,
-    }))
+    this.setState(() => ({ toHome: true }))
 
   };
 
@@ -65,6 +63,14 @@ class Login extends Component {
   }
 }
 
+function mapDispatchToProps(dispatch)  {
+  return {
+    setUser: function(selectedUser) {
+      dispatch(setAuthedUser(selectedUser));
+    }
+  };
+}
+
 function mapStateToProps ({users}) {
 
   return {
@@ -73,4 +79,4 @@ function mapStateToProps ({users}) {
   }
 }
 
-export default connect(mapStateToProps)(Login)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login))
