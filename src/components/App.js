@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { connect } from 'react-redux'
 import { handleInitialData } from "../actions/shared";
 import LoadingBar from 'react-redux-loading';
@@ -10,6 +10,7 @@ import NewQuestion from "./NewQuestion";
 import Nav from './Nav'
 import Poll from './Poll'
 import Question from './Question'
+import NotFound from './NotFound'
 
 class App extends Component {
   componentDidMount() {
@@ -29,12 +30,15 @@ class App extends Component {
               {loading === true
               ? null
                 : <div>
-                  <Route path='/' exact component={Home} />
-                  <Route path='/login' exact component={Login} />
-                  <Route path='/leaderboard' exact component={Leaderboard} />
-                  <Route path='/add' exact component={NewQuestion} />
-                  <Route path='/polls/:id'  component={Poll} />
-                  <Route path='/questions/:id'  component={Question} />
+                  <Switch>
+                    <Route path='/' exact component={Home} />
+                    <Route path='/login' exact component={Login} />
+                    <Route path='/leaderboard' exact component={Leaderboard} />
+                    <Route path='/add' exact component={NewQuestion} />
+                    <Route path='/polls/:id'  component={Poll} />
+                    <Route path='/questions/:id'  component={Question} />
+                    <Route component={NotFound} />
+                  </Switch>
                 </div>}
             </div>
           </Fragment>

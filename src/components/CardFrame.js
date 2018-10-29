@@ -10,6 +10,9 @@ class CardFrame extends Component {
 
   render() {
     if (this.props.author === null) {
+      // TODO - need to put logic to handle a bad id here I think...
+      // alert('in CardFrame redirect')
+      // alert('id is ' + this.props.id)
       return <Redirect to='/'/>
     }
     return (
