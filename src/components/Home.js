@@ -95,7 +95,7 @@ function mapStateToProps ({authedUser, users, questions}) {
 
   // sort questions from most recently created to least recently created.
   questionIds.sort(function(a, b) {
-    return questions[a].timestamp  < questions[b].timestamp;
+    return (questions[b].timestamp - questions[a].timestamp);
   });
 
   // this gets keys of answers by authed users
@@ -103,7 +103,7 @@ function mapStateToProps ({authedUser, users, questions}) {
 
   // sort answeredQuestions from most recently created to least recently created.
   answeredQuestions.sort(function(a, b) {
-    return questions[a].timestamp  < questions[b].timestamp;
+    return (questions[b].timestamp - questions[a].timestamp);
   });
 
   // find unanswered (remaining) questions

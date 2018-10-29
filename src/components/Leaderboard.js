@@ -33,11 +33,15 @@ function mapStateToProps( { authedUser, users }) {
 
   // this gets ids of the users
   const userIds = Object.keys(users);
+  console.log('userIds before: ' + userIds);
 
   // sort by "score" (total number of questions and answers by the user)
   userIds.sort(function(a, b) {
-    return users[a].questions.length + Object.keys(users[a].answers).length < users[b].questions.length + Object.keys(users[b].answers).length;
+    // return users[a].questions.length + Object.keys(users[a].answers).length < users[b].questions.length + Object.keys(users[b].answers).length;
+    return (users[b].questions.length + Object.keys(users[b].answers).length) - (users[a].questions.length + Object.keys(users[a].answers).length);
   });
+
+  console.log('userIds after: ' + userIds);
 
   return {
     users,

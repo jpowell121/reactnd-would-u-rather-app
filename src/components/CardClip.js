@@ -9,7 +9,7 @@ class CardClip extends Component {
         <span>Would you rather....</span>
         <p>...{this.props.questionText}...</p>
         {/* handle sending user to either view a poll (for answered questions) or take the poll (for unanswered) */}
-        <Link to={this.props.status === 'answers' ? `/poll/${this.props.id}` : `/question/${this.props.id}` }
+        <Link to={this.props.status === 'answers' ? `/polls/${this.props.id}` : `/questions/${this.props.id}` }
               className='qf-info-button'>
           {this.props.status === 'answers' ? 'View Poll' : 'Take Poll'}</Link>
       </div>
