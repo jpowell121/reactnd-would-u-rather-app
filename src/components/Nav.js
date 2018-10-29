@@ -1,64 +1,67 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect, NavLink, withRouter } from 'react-router-dom'
 import {setAuthedUser} from "../actions/authedUser";
 
-class Nav extends Component {
+const Nav = ({ setUser, authedUser, loggedUser, avatarURL, author}) => {
 
+  const navLinks = () => {
+    const links = [
+      ['/', 'Home'],
+      ['/add', 'New Question'],
+      ['/leaderboard', 'Leaderboard']
+    ];
 
-  handleLogout = () => {
+    return links.map( link => (
+      <li key={link[1]}>
+        <NavLink to={link[0]} activeClassName = 'active'>
+          {link[1]}
+        </NavLink>
+      </li>
+    ))
+  };
 
-    const { dispatch } = this.props;
+  const handleLogout = () => {
 
-    // set the redux state to no user
-    dispatch(setAuthedUser(''));
-
+    setUser();
     // set state so next render will send user to the Home component ('\login' route)
     return <Redirect to='/'/>
 
   };
 
-  render() {
-    return (
-      <div className='nav'>
-        <ul>
+  return (
+    <div className='nav'>
+      <ul>
+        {navLinks()}
+        <div className='nav-right' style={{ display: authedUser ? 'block' : 'none'}}>
           <li>
-            <NavLink to='/' exact activeClassName='active'>
-              Home
-            </NavLink>
+              <span className='login-message'>Hello, {loggedUser}!</span>
           </li>
           <li>
-            <NavLink to='/add' activeClassName='active'>
-              New Question
-            </NavLink>
+            <img
+              src={avatarURL}
+              alt={author}
+              className='nav-avatar'
+            />
           </li>
           <li>
-            <NavLink to='/leaderboard' activeClassName='active'>
-              Leaderboard
-            </NavLink>
+            <a onClick={handleLogout}>
+              Logout
+            </a>
           </li>
-          <div className='nav-right'  style={ this.props.authedUser ? { display:'block'} : {display : 'none'}}>
-            <li>
-                <span className='login-message'>Hello, {this.props.loggedUser}!</span>
-            </li>
-            <li>
-              <img
-                src={this.props.avatarURL}
-                alt={this.props.author}
-                className='nav-avatar'
-              />
-            </li>
-            <li>
-              <a onClick={this.handleLogout}>
-                Logout
-              </a>
-            </li>
-          </div>
-        </ul>
-      </div>
-    )
-  }
-}
+        </div>
+      </ul>
+    </div>
+  )
+};
+
+
+
+
+const mapDispatchToProps = dispatch => ({
+  setUser: () => dispatch(setAuthedUser(''))
+});
+
 
 function mapStateToProps ( {authedUser, users} ) {
 
@@ -80,4 +83,4 @@ function mapStateToProps ( {authedUser, users} ) {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(Nav))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Nav))
