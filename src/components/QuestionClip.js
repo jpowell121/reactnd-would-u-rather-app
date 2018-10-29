@@ -18,24 +18,29 @@ class QuestionClip extends Component {
   handleAnswerQuestion = (event) => {
     event.preventDefault();
 
-    const { dispatch, authedUser, id } = this.props;
+    const { answerQuestion, authedUser, id } = this.props;
+    const { option } = this.state;
 
     // update user store
-    dispatch(handleAnswerUpdateUser({
+    answerQuestion({
       authedUser: authedUser,
       qid: id,
-      answer: this.state.option,
-    }));
-
-    this.setState({
-      answered: true,
+      answer: option,
     });
+
+    this.setState({ answered: true });
   };
 
   render() {
-    if (this.state.answered === true) {
-      return <Redirect to='/'/>
+
+    const { answered }  = this.state;
+    const { id } = this.props;
+
+    if (answered) {
+      const path = '/polls/' + id;
+      return <Redirect to={path} />
     }
+
     return (
       <div className="qf-info">
         <h2>Would you rather ...</h2>
@@ -77,4 +82,12 @@ function mapStateToProps ({authedUser, questions}, {id}) {
 
 }
 
-export default connect(mapStateToProps)(QuestionClip)
+function mapDispatchToProps(dispatch)  {
+  return {
+    answerQuestion: function (questionInfo) {
+      dispatch(handleAnswerUpdateUser({ ...questionInfo}));
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuestionClip)
