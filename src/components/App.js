@@ -13,17 +13,20 @@ import Question from './Question'
 
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(handleInitialData());
+    this.props.handleInitialData();
   }
 
   render() {
+
+    const{ loading } = this.props;
+
     return (
         <Router>
           <Fragment>
             <LoadingBar/>
             <div className="container">
               <Nav />
-              {this.props.loading === true
+              {loading === true
               ? null
                 : <div>
                   <Route path='/' exact component={Home} />
@@ -46,5 +49,9 @@ function mapStateToProps ({ authedUser }) {
   }
 }
 
+const mapDispatchToProps = {
+  handleInitialData,
+};
 
-export default connect(mapStateToProps)(App);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
