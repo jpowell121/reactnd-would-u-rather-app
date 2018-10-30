@@ -10,7 +10,7 @@ const NotFound = () => (
       className='login-logo'
     />
     <div className='login-button'>
-      <Link to="/" style={{textDecoration: 'none'}} >Return to login page</Link>
+      <Link to="/" style={{textDecoration: 'none'}} >Return to application</Link>
     </div>
   </div>
 );
