@@ -36,11 +36,6 @@ class PollResult extends Component {
 
 function mapStateToProps ({authedUser, questions}, {id}) {
 
-  // if no user logged in, return
-  if (authedUser === '' || authedUser === null) {
-    return {authedUser: '',}
-  }
-
   // get counts of votes
   const optionOneVotes = questions[id].optionOne.votes.length;
   const optionTwoVotes = questions[id].optionTwo.votes.length;

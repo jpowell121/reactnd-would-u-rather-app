@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import logo from '../images/question_man.png'
 import { setAuthedUser } from '../actions/authedUser'
-import { Redirect, withRouter } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 class Login extends Component {
   state = {
-    toHome: false,
+    redirectToReferrer: false,
   };
 
   handleSubmit = (e) => {
@@ -18,17 +18,17 @@ class Login extends Component {
     setUser(this.refs.userSelected.value);
 
     // set state so next render will send user to the Home component ('\' route)
-    this.setState(() => ({ toHome: true }))
+    this.setState(() => ({ redirectToReferrer: true }))
 
   };
 
   render() {
+    // either send the user to the home page (/) or the referring URL if it exists
+    const { from } = this.props.location.state || { from: { pathname: '/' } };
+    const { redirectToReferrer } = this.state;
 
-    const { toHome } = this.state;
-
-    // if user is logged in redirect to Home component
-    if (toHome === true) {
-      return <Redirect to='/'/>
+    if (redirectToReferrer === true) {
+      return <Redirect to={from} />
     }
 
     return (
@@ -79,4 +79,4 @@ function mapStateToProps ({users}) {
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login))
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
